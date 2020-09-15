@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!-- <link rel="stylesheet" href="./js/DPlayer.min.css"> -->
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    </head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .text {
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            margin-top: 300px;
+            font-size: 82px;
+            color: #fff;
+            font-family: PingFang SC;
+        }
+
+        .text_two {
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            margin-top: 429px;
+            font-size: 30px;
+            color: #fff;
+            font-family: PingFang SC;
+        }
+
+        .content {
+            background: url(./pexels-zaksheuskaya-1546249.jpg);
+            display: flex;
+            /* position: relative; */
+            background-position: center;
+            background-size: cover;
+            justify-content: center;
+            align-items: center;
+            height: 1300px;
+        }
+
+        .dplayer {
+            margin-top: 1000px;
+            /* margin-bottom: 500px; */
+            /* padding-bottom: 500px; */
+            width: 1066px;
+            height: 600px;
+        }
+
+        .one {
+            width: 100%;
+            height: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="text animate__animated animate__fadeIn animate__delay-1s " data-rellax-speed="7">Internal live broadcast
+        platform</h1>
+    <h2 class="text_two animate__animated animate__fadeIn animate__delay-2s" data-rellax-speed="7">From the Technology
+        Department of new
+        Media
+        Center</h2>
+    <div class="content">
+        <div class="dplayer" data-rellax-speed="7" id="dplayer"></div>
+    </div>
+    <div class="one">
+
+    </div>
+    <!-- <div id="dplayer"></div> -->
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="./DPlayer.min.js"></script>
+<script src="./rellax.min.js"></script>
+<script>
+    var src =
+        'http://hls.deepdesigner.top/sdutplay/stream.m3u8' //放置你要直播的地址
+    const dp = new DPlayer({
+        container: document.getElementById('dplayer'),
+        live: true,
+        // danmaku: true,
+        apiBackend: {
+            read: function (endpoint, callback) {
+                console.log('Pretend to connect WebSocket');
+                // callback();
+            },
+            send: function (endpoint, danmakuData, callback) {
+                console.log('Pretend to send danamku via WebSocket', danmakuData);
+                // callback();
+            },
+        },
+        video: {
+            url: `${src}`,
+            type: 'hls',
+        },
+    });
+    var rellax = new Rellax('.dplayer');
+    var rellax = new Rellax('.text');
+    var rellax = new Rellax('.text_two');
+</script>
+
+</html>
